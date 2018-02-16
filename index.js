@@ -1,9 +1,9 @@
 app=require("express")()
 net=require("http").createServer(app)
-app.get("/",(req,res)=>{
-res.sendFile(__dirname+"/public/public.htm")
+app.get("*",(req,res)=>{
+res.sendFile(__dirname+"/docs/index.htm")
 })
-app.use("/public",require("express").static(__dirname+"/public"))
+app.use("/docs",require("express").static(__dirname+"/public"))
 net.listen(process.env.PORT||3000,()=>{console.log("Ready!")})
 require("socket.io")(net,{}).sockets.on("connection",(socket)=>{
 console.log("socket connection")
